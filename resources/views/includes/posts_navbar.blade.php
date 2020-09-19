@@ -59,4 +59,6 @@
     </div>
   </nav>
 
-  <img src="/storage/profile_images/{{ Auth::user()->profile_img }}" class="rounded-circle profile-pic" title="{{ Auth::user()->name ?? 'Guest' }}">
+ @auth
+    <img src="/storage/profile_images/{{ Auth::user()->profile_img ?? 'no_profile_image.png' }}" class="rounded-circle profile-pic" title="{{ Auth::user()->name ?? 'Guest' }}">
+ @endauth

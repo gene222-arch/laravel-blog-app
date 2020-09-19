@@ -9,6 +9,7 @@ use App\Models\Post;
 
 class DashboardController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -28,4 +29,5 @@ class DashboardController extends Controller
     {   
         return view('dashboard')->with(['posts' => User::find(Auth::id())->posts]);
     }
+    
 }

@@ -23,4 +23,5 @@
         </div>
     </div>
     <img src="../../../storage/page_cover/cover.png" alt="">
-@endsection
+
+    @endsection
