@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm">
     <div class="container-fluid">
 
         <a class="navbar-brand text-danger" href="{{ url('/') }}">

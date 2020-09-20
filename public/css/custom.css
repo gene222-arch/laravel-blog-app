@@ -6,6 +6,7 @@
 }
 
 
+
 img {
 
     max-width: 100%;
@@ -73,6 +74,13 @@ nav .active {
     transform: scale(1.1);
 }
 
+/*
+ ___________________________________________
+ |
+ | POST SECTION
+ |
+ |___________________________________________
+*/
 
 /* post index-page section */
 .landing-page-posts {
@@ -82,18 +90,67 @@ nav .active {
     background-position: right;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    width: 100%;
 }
 
+/* post create */
+
+.create-post-title {
+
+    background: url('../storage/page_cover/postcreate.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 15vh;
+    color: rgb(255, 255, 255);
+    background-color: rgb(131, 109, 255);
+    text-align: right;
+    font-size: 2.5rem;
+    padding: 1.75rem;
+}
+
+/*
+ ___________________________________________
+ |
+ | PAGE SECTION
+ |
+ |___________________________________________
+*/
+
 /* about-us section */
+
+.landing__page__about__us {
+    width: 100%;
+    margin: 0 auto;
+}
 
 .about__us__header {
     background: url('../storage/page_cover/aboutus.png') no-repeat center center fixed;
     background-size: cover;
-    padding: 17em;
+    padding: 17rem;
+    margin: 0;
     color: #FFF;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 360px) {
+
+    .about__us__header {
+        background-size: contain;
+        padding: 10rem 5rem;
+    }
+}
+
+@media screen and (min-width: 360.1px) and (max-width: 375px) {
+
+    .about__us__header {
+        background-size: contain;
+        padding: 15rem 11.7rem;
+    }
+}
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+
     .about__us__header {
         background-size: contain;
         padding: 10rem 11.5rem 20rem;
@@ -143,36 +200,81 @@ nav .active {
 .about-us-assets {
 
     width: 100%;
-}
-
-.landing__page__about__us 
-.our-achievements > * {
-
-    flex-basis: calc(300px / 1rem);
+    margin: 0 auto;
 }
 
 .landing__page__about__us 
 .our-achievements
 {
 
-    justify-content: space-around;
+    width: 100%;
     background: rgb(255, 255, 255);
     list-style-type: none;
 }
 
+.landing__page__about__us 
+.our-achievements > * {
+
+    flex-basis: 18.75rem;
+    border: .125rem solid rgb(65, 65, 65);
+}
+
+
 .landing__page__about__us li {
 
-    background: rgb(247, 77, 77);
+    background: rgb(255, 255, 255);
     margin: 2rem;
     padding: 2rem;
     border-radius: 20rem;
     text-align: center;
 }
 
+.landing__page__about__us li:nth-child(1) a::before {
+
+    content: "\f0c0";
+    margin-right: .5rem;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    color: rgb(255, 83, 83);
+}
+
+.landing__page__about__us li:nth-child(2) a::before {
+
+    content: "\f5a2";
+    margin-right: .5rem;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    color: rgb(120, 83, 255);
+}
+.landing__page__about__us li:nth-child(3) a::before {
+
+    content: "\f781";
+    margin-right: .5rem;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    color: rgb(250, 227, 24);
+}
+.landing__page__about__us li:nth-child(4) a::before {
+
+    content: "\f4fc";
+    margin-right: .5rem;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    color: rgb(0, 224, 93);
+}
+.landing__page__about__us li:nth-child(5) a::before {
+
+    content: "\f012";
+    margin-right: .5rem;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    color: rgb(0, 0, 0);
+}
+
 .landing__page__about__us li a {
     
     font-size: 1.2rem;
-    color: white;
+    color: rgb(68, 68, 68);
 }
 
 .about__us__achievements__footer {
@@ -180,25 +282,24 @@ nav .active {
     justify-content: center;
     background: url('../storage/page_cover/world.png') no-repeat center center fixed;
     background-size: contain;
-    padding: 17rem;
+    padding: 17.5rem;
     text-align: center;
 }
+
 
 @media screen and (max-width: 360px) {
     
     .about__us__achievements__footer {
-        padding: calc(360px / (1rem + 16px));;
+        padding: 6.5rem;
     }
 }
 
+@media screen and (min-width: 360.1px) and (max-width: 375px) {
 
-@media screen and (max-width: 375px) {
-    
     .about__us__achievements__footer {
-        padding: calc(375px / (1rem + 16px));;
+        padding: 6rem 4rem;
     }
 }
-
 
 .about__us__achievements__footer span {
     font-weight: 700;
@@ -219,16 +320,213 @@ nav .active {
 .about-us-footer-btn {
     display: inline;
     font-size: 1.5rem;
-    padding: 0 1.5rem;;
-    line-height: 120px;
+    padding: 0 1.5rem;
+    margin: .5rem 0;
+    line-height: 5rem;
     border: .25rem solid white;
 }
 
-/* Services section */
-.landing-image-services {
+@media screen and (max-width: 360px) {
+    
+    .about__us__achievements__footer span {
 
-    height: 650px;
+        font-size: calc(30px / 1rem);
+    }
+
+    .about__us__achievements__footer h1 {
+        padding: 3rem;
+    }
+
+    .about__us__achievements__footer 
+    .about-us-footer-btn {
+        display: block;
+        font-size: 1rem;
+        padding: .5rem 2rem;
+        line-height: 1.6;
+    }
+
 }
+
+
+/* Services section */
+
+.service__section__landing__page 
+.service-section-title {
+
+    width: 100%;
+    padding: 2rem 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: white;
+    background: rgb(130, 130, 252);
+}
+
+.service__section__landing__page
+.service-section-img {
+    background: url('../storage/page_cover/services.png') no-repeat center center fixed;
+    background-size: contain;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+}
+
+.service__section__landing__page 
+.img-description {
+    list-style-type: none;
+    color: rgb(109, 108, 108);
+}
+
+.services__offered {
+    width: calc(1200px / 1rem);
+    height: 100vh;
+}
+
+.services__offered .services-container {
+
+    width: 90%;
+    height: 80%;
+    margin: -10vh auto;
+}
+
+.services__offered .services {
+
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+    list-style-type: none;
+    text-align: center;
+    padding: 1rem;
+    
+}
+
+.services__offered .services > * {
+
+    position: relative;
+    flex-basis: 18.75rem;
+    height:25rem;
+    margin: 5rem 0 25rem; 
+    background: white;
+}
+
+@media screen and (max-width: 360px) {
+    .services__offered .services > * {
+        flex-basis: 16.5625rem;
+    }
+}
+
+@media screen and (min-width: 360.1px) and (max-width: 375px) {
+    .services__offered .services > * {
+        flex-basis: 17.40625rem;
+    }
+}
+
+.services__offered li::after {
+
+    content: '';
+    position: absolute; 
+    top: -35%;
+    left: calc((18.75rem - 10rem) / 2);
+    padding: 5rem;
+    border-radius: 50rem;
+    background: rgb(255, 254, 254);
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
+    border: .25rem solid rgb(255, 101, 101);
+}
+
+.services__offered li::before {
+
+    content: '1st';
+    position: absolute; 
+    top: calc(-17.5% - 1rem);
+    left: calc(9.375rem - 1.5rem);
+    z-index: 1;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 360px) {
+    .services__offered li::after {
+        left: calc((16.5625rem - 10rem) / 2);
+    }
+    .services__offered li::before {
+        left: calc(8.28125rem - 1.5rem);
+    }
+}
+
+@media screen and (min-width: 360.1px) and (max-width: 375px) {
+    .services__offered li::after {
+        left: calc((17.40625rem - 10rem) / 2);
+    }
+    .services__offered li::before {
+        left: calc(8.703125rem - 1.5rem);
+    }
+}
+
+/* card info */
+/* img */
+.service-item .service-img {
+
+    width: 100%;
+    height: 12.5rem;
+    background: rgb(136, 135, 135);
+}
+/* title */
+.service-item .service-title {
+    font-size: 1.25rem;
+    margin: 2.5rem 0;
+}
+/* description */
+.service-item .service-description {
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 15rem;
+    background: rgb(255, 255, 255);
+    border-top: .125rem solid rgb(148, 148, 148);;
+}
+
+.service-item .service-footer {
+    
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
+
+}
+
+.service-item .service-footer > * {
+
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgb(255, 255, 255);
+}
+
+.service-item .service-footer div:focus,
+.service-item .service-footer div:hover {
+
+    text-decoration: none;
+    outline: none;
+    transform: scale(1.1);
+    color: white;
+    background: rgb(255, 201, 101);
+}
+
+.service-item .service-footer div:nth-child(1) {
+    border-right: .125rem solid rgb(100, 100, 100);
+}
+
+.service-item .service-footer a {
+    color: rgb(56, 56, 56);
+}
+
+
+
+
 
 @media screen and (max-width: 768px) {
 
@@ -241,23 +539,61 @@ nav .active {
 .landing-page {
 
     display: flex;
-    justify-content: space-between;
+    flex-flow: column wrap;
+    align-items: flex-start;
     flex-wrap: wrap;
+    background: url('../storage/page_cover/cover.png') no-repeat center center fixed;
+    background-size: contain;
+    width: 100%;
+    height: 75vh;
 }
 
+.landing-text-container {
+
+    height: 90vh;
+    margin: auto 0;
+
+}
 .home-page-landing-text {
 
-    flex-basis: 150px;
-    height: 3em;  
-    margin: .5em 1em 0;
-    font-size: 30px;
-    text-transform: uppercase;
+    flex-basis: 7rem; 
+    width: 10rem;
     text-align: center;
-    line-height: 3em;
-    background: rgb(83, 129, 255);
-    color: white;
-    border-radius: 5em;
-    box-shadow:inset 0 0 10px rgba(255, 255, 255);
+    margin: .5rem 0;
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    border-radius: .5rem;
+    color: rgb(255, 255, 255);
+    border: .125rem solid rgb(95, 95, 95);
+    background: rgb(118, 109, 255); 
+}
+
+.brand__quote {
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 90%;
+    padding: 5rem;
+    margin: 2.5rem auto;
+    border-top: .5rem solid rgb(253, 105, 105);
+    border-bottom: .5rem solid rgb(253, 105, 105);
+    border-radius: .5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(250, 250, 250);
+    text-shadow: 0 0 .5rem rgba(0, 0, 0, .5);
+    background: url('../storage/page_cover/typewriter.png') no-repeat center center fixed;
+    background-size: contain;
+}
+.brand__quote .brand-description {
+
+    background: rgba(197, 197, 197, 0.5);
+    border-bottom: .5rem solid rgb(46, 46, 46);
+    padding: 2rem;
 
 }
 
@@ -276,7 +612,7 @@ nav .active {
 
 .footer .contact__form {
 
-    width: 90%;
+    width: 100%;
     height: 70vh;
     margin: 2em auto 10em;
 }
@@ -347,7 +683,8 @@ nav .active {
 
     height: 10vh;
     width: 50%;
-    margin: 1em auto;;
+    margin: 1em auto;
+    text-align: center;
 }
 
 .footer .social-media-links {
