@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\MailsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfilesController;
 
@@ -17,16 +18,43 @@ use App\Http\Controllers\ProfilesController;
 |
 */
 
-Route::get('/', [SiteController::class, 'index'])->name('homepage');
-Route::get('/aboutus', [SiteController::class, 'about_us'])->name('aboutus');
-Route::get('/contactus', [SiteController::class, 'contact_us'])->name('contactus');
-Route::get('/services', [SiteController::class, 'services'])->name('services');
+/*
+|--------------------------------------------------------------------------
+| Site Controller
+|--------------------------------------------------------------------------
+|
+*/
+    Route::get('/', [SiteController::class, 'index'])->name('homepage');
+    Route::get('/aboutus', [SiteController::class, 'about_us'])->name('aboutus');
+    Route::get('/contactus', [SiteController::class, 'contact_us'])->name('contactus');
+    Route::get('/services', [SiteController::class, 'services'])->name('services');
 
-Route::resource('posts', PostsController::class);
+/*
+|--------------------------------------------------------------------------
+| Posts Controller
+|--------------------------------------------------------------------------
+|
+*/
+    Route::resource('posts', PostsController::class);
 
-Auth::routes();
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+/*
+|--------------------------------------------------------------------------
+| Auth Controller/User
+|--------------------------------------------------------------------------
+|
+*/
+    Auth::routes();
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user/profile', [ProfilesController::class, 'index']);
+    Route::get('/user/edit-profile', [ProfilesController::class, 'edit']);
+    Route::post('/user/profile/{post}', [ProfilesController::class, 'update']);
 
-Route::get('/user/profile', [ProfilesController::class, 'index']);
-Route::get('/user/edit-profile', [ProfilesController::class, 'edit']);
-Route::post('/user/profile/{post}', [ProfilesController::class, 'update']);
+/*
+|--------------------------------------------------------------------------
+| Mail Controller
+|--------------------------------------------------------------------------
+|
+*/
+    Route::get('/testmail', [MailsController::class, 'index']);
+    Route::post('/contactus', [MailsController::class, 'store']);
+

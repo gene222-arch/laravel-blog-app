@@ -10,16 +10,42 @@
 
         <div class="container contact__form spacing">
             <h1 class="text-center">Mail us</h1>
-            <form action="" class="contact-form">
+            <form method="POST" class="contact-form" action="{{ action('App\Http\Controllers\MailsController@store') }}">
+                @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="" placeholder="Your Email">
+                    <input type="email" value="{{ Auth::user()->email ?? 'Guest@yahoo.com' }}" class="form-control @error('email') is-invalid @enderror" name="email" id="" required>
+                    
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="message-body">Message</label>
-                    <textarea name="message-body" class="form-control" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                    <label for="subject">Subject</label>
+                    <input type="subject" name="subject" value="{{ Auth::user()->subject ?? 'Guest@yahoo.com' }}" class="form-control @error('subject') is-invalid @enderror" id="" required>
+                    
+                    @error('subject')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
-                <button class="btn btn-success">Send Mail</button>
+
+                <div class="form-group">
+                    <label for="message_body">Message</label>
+                    <textarea name="message_body" class="form-control @error('message_body') is-invalid @enderror" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                    
+                    @error('message_body')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                @auth
+                    <button class="btn btn-success">Send Mail</button>
+                @endauth
             </form>
         </div>
 

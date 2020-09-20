@@ -93,6 +93,12 @@ nav .active {
     color: #FFF;
 }
 
+@media screen and (max-width: 768px) {
+    .about__us__header {
+        background-size: contain;
+        padding: 10rem 11.5rem 20rem;
+    }
+}
 
 .about__us__header 
 .about-us-header-text {
@@ -142,7 +148,7 @@ nav .active {
 .landing__page__about__us 
 .our-achievements > * {
 
-    flex-basis: 300px;
+    flex-basis: calc(300px / 1rem);
 }
 
 .landing__page__about__us 
@@ -157,9 +163,9 @@ nav .active {
 .landing__page__about__us li {
 
     background: rgb(247, 77, 77);
-    margin: 2em;
-    padding: 2em;
-    border-radius: 50em;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 20rem;
     text-align: center;
 }
 
@@ -169,27 +175,53 @@ nav .active {
     color: white;
 }
 
-.about-us-achievements-footer {
+.about__us__achievements__footer {
+
+    justify-content: center;
     background: url('../storage/page_cover/world.png') no-repeat center center fixed;
     background-size: contain;
-    padding: 5em;
-
-}
-
-.about-us-achievements-footer span {
-    font-weight: 700;
-    font-size: 120px;
-}
-
-.about-us-achievements-footer h1 {
-    
+    padding: 17rem;
     text-align: center;
+}
+
+@media screen and (max-width: 360px) {
+    
+    .about__us__achievements__footer {
+        padding: calc(360px / (1rem + 16px));;
+    }
+}
+
+
+@media screen and (max-width: 375px) {
+    
+    .about__us__achievements__footer {
+        padding: calc(375px / (1rem + 16px));;
+    }
+}
+
+
+.about__us__achievements__footer span {
+    font-weight: 700;
+    font-size: calc(120px / 1rem);
+}
+
+.about__us__achievements__footer h1 {
+    
     text-shadow: 0 0 5px rgba(255, 255, 255, .5);
     background: rgb(235, 235, 235);
     color: rgb(31, 30, 30);
-    padding: 1em 3.5em;
-    margin: 4em;
+    padding: 2rem .5rem;
+    margin: 0;
     opacity: .9;
+}
+
+.about__us__achievements__footer 
+.about-us-footer-btn {
+    display: inline;
+    font-size: 1.5rem;
+    padding: 0 1.5rem;;
+    line-height: 120px;
+    border: .25rem solid white;
 }
 
 /* Services section */

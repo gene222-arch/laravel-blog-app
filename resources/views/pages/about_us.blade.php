@@ -31,11 +31,11 @@
                     <a href="" class="achievement-link">Loved by Many</a>
                 </li>
             </ul>
-            <div class="about-us-achievements-footer split">
+            <div class="about__us__achievements__footer split">
                 <h1>
                     <span class="emphasized"><strong>L</strong></span> et the W<i class="fas fa-globe-europe text-success" style="font-size: 25px"></i>rld know your Wonderful Stories 
                 </h1>
-                <a href="/posts/create" class="btn btn-success py-2 px-5" style="font-size: 30px;">Get Started</a>
+                <a href="/posts/create" class="btn btn-success about-us-footer-btn">Get Started</a>
             </div>
         </div>
     </div>

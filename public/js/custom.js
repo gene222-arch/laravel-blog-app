@@ -81,7 +81,9 @@ window.addEventListener('load', function() {
         document.querySelector('.cancel').style.display = 'none';
     })
 
-    if (!document.querySelector('textarea')) {
+
+    if (document.querySelector('textarea')) {
+
         document.querySelector('textarea').addEventListener('click', ()=> CKEDITOR.replace('textarea-ckeditor'));
     }
 
