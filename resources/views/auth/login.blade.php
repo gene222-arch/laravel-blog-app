@@ -1,9 +1,25 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container-fluid">
+
+    <div class="row user__login">
+        @forelse (\App\Models\User::get_all_users() as $username)
+            <div class="recent__logins col-md-2">
+                <div class="row">
+                    <div class="card recent-login-card">
+                        <img src="../../../storage/cover_images/no_profile_image.png" class="card-img-top" alt="...">
+                        <hr>
+                        <div class="card-body">
+                        <p class="card-title">{{ $username ?? 'Guest' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @empty
+            
+        @endforelse
+        <div class="col-md-6 login-form">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

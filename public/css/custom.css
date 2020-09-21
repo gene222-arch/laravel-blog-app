@@ -592,9 +592,23 @@ nav .active {
 .brand__quote .brand-description {
 
     background: rgba(197, 197, 197, 0.5);
-    border-bottom: .5rem solid rgb(46, 46, 46);
+    border-bottom: .5rem solid rgb(255, 79, 79);
     padding: 2rem;
 
+}
+
+.brand__quote .emphasized {
+    font-family: 'Segoe Script';
+}
+
+.brand__quote .get-started-btn {
+
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    color: white;
+    background: rgb(188, 112, 243);
+    border: none;
 }
 
 /* footer + contact-us section */
@@ -700,7 +714,42 @@ nav .active {
     font-size: 2em;
 }
 
-/* User PROFILE */
+/*
+ ___________________________________________
+ |
+ | USER SECTION
+ |
+ |___________________________________________
+*/
+
+
+/*
+ ___________________________________________
+ |
+ | LOGIN PAGE
+ |
+ |___________________________________________
+*/
+
+.user__login > * {
+
+    margin-top: 2.5rem;
+}
+
+.recent__logins .recent-login-card {
+
+    width: 15rem;
+    height: 18rem;
+    margin: 0 1rem;
+}
+
+.recent__logins .login-form {
+
+
+}
+
+
+
 
 /* sidebar */
 .profile-outer-container {

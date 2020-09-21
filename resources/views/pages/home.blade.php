@@ -25,8 +25,8 @@
         </div>
     </div>
     <div class="brand__quote">
-        <p class="brand-description">WRITE until it BECOMES as natural as BREATHING <br> WRITE until NOT WRITING  makes you ANXIOUS</p>
-        <a href="" class="btn btn-warning py-3 px-5">Get Started</a>
+        <p class="brand-description"><span class="emphasized">WRITE</span> until it BECOMES as natural as BREATHING <br> <span class="emphasized">WRITE</span> until NOT WRITING  makes you ANXIOUS</p>
+        <a href="login" class="btn btn-warning get-started-btn">Let's Start Writing Your Story</a>
     </div>
 
     @endsection
