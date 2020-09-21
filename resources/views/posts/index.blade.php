@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="row landing-page-posts">
+    <div class="row landing__page__posts">
         @forelse ( $posts as $post )
               <div class="card text-center my-5 mr-auto ml-auto border-dark" style="width: 90%">
                 <div class="row no-gutter">
@@ -29,7 +29,9 @@
               </div>
 
         @empty
-            No Post/s
+            <div class="no__post__found">
+              <h1 class="no-post-text">No Post's</h1>
+            </div>
         @endforelse
     </div>    
 

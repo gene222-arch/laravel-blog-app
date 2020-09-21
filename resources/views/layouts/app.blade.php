@@ -9,8 +9,9 @@
 
 {{-- external links --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
 {{-- scripts --}}
-<script src="{{ asset('js/app.js') }}"></script>  
+    <script src="{{ asset('js/app.js') }}"></script>
 {{-- styles  --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -19,15 +20,11 @@
     
     <div class="app">
 
-        @include('includes.posts_navbar')
- 
-        <div class="container">
-            @include('includes.messages')
+        <div class="container-fluid">
             @yield('content')
         </div>
-
     </div>
-      
+
     @yield('scripts')
 </body>
 </html>

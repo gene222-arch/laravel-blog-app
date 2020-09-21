@@ -1,5 +1,4 @@
-
-  <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
     <div class="container-fluid">
 
         <a class="navbar-brand text-danger" href="{{ url('/') }}">
@@ -11,10 +10,11 @@
         </button>
   
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Right Side Of Navbar -->
+            
+<!-- Right Side Of Navbar -->
+
             <ul class="navbar-nav ml-auto">
 
-                <!-- Authentication Links -->
 {{-- Offline User --}}
                 @guest
                     <li class="nav-item">
@@ -37,7 +37,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name ?? 'Guest' }}
+                            {{ Auth::user()->firstname ?? 'Guest' }}
                         </a>
   
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -57,8 +57,10 @@
             </ul>
         </div>
     </div>
-  </nav>
+</nav>
 
  @auth
-    <a href="/user/profile"><img src="/storage/profile_images/{{ Auth::user()->profile_img ?? 'no_profile_image.png' }}" class="rounded-circle profile-pic" title="{{ Auth::user()->name ?? 'Guest' }}"></a>
+    <a href="/user/profile">
+        <img src="/storage/profile_images/{{ Auth::user()->profile_img }}" class="rounded-circle profile-pic" title="{{ Auth::user()->firstname ?? 'Guest' }}">
+    </a>
  @endauth

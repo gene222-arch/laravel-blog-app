@@ -3,8 +3,8 @@
 @section('sidebar')
     <div class="profile-side-bar">
         <div class="side-bar-img">
-            <img src="../../../storage/profile_images/{{ Auth::user()->profile_img ?? 'no_profile_image.png' }}" alt="">
-            <h5 class="side-bar-profile-username text-center"><strong>{{ Auth::user()->name ?? 'Guest' }}</strong></h5>
+            <img src="../../../storage/profile_images/{{ Auth::user()->profile_img }}" alt="">
+            <h5 class="side-bar-profile-username text-center"><strong>{{ Auth::user()->firstname ?? 'Guest' }}</strong></h5>
             <blockquote class="text-center text-secondary">"Ball is lyf"</blockquote>
         </div>
         <ul class="side-bar">
@@ -39,9 +39,9 @@
                 <h1 class="personal__info">Personal Information</h1>
                 <form action="" class="profile-info">
                     <label for="firstname">Firstname</label>
-                    <input type="text" name="firstname" value="{{ Auth::user()->name ?? 'Guest' }}" disabled>
+                    <input type="text" name="firstname" value="{{ Auth::user()->firstname ?? 'Guest' }}" disabled>
                     <label for="lastname">Lastname</label>
-                    <input type="text" name="lastname" value="{{ Auth::user()->name ?? 'Guest' }}" disabled>
+                    <input type="text" name="lastname" value="{{ Auth::user()->lastname ?? 'Guest' }}" disabled>
                     <label for="email">Email</label>
                     <input type="email" name="email" value="{{ Auth::user()->email ?? 'Guest' }}" disabled>
                     <label for="city">City</label>
@@ -50,8 +50,8 @@
             </div>
             <div class="profile__avatar">
     
-                    <img src="../../../storage/profile_images/{{ Auth::user()->profile_img ?? 'no_profile_image.png' }}" alt="">
-                    <caption><h5 class="profile-user-avatar-name">{{ Auth::user()->name ?? 'Guest' }}</h5></caption>
+                    <img src="../../../storage/profile_images/{{ Auth::user()->profile_img }}" alt="">
+                    <caption><h5 class="profile-user-avatar-name"><strong>{{ (Auth::user()->firstname . ' ' . Auth::user()->lastname) ?? 'Guest' }}</strong></h5></caption>
                     <p class="profile-img-description">
                         <a href="" class="btn btn-primary edit-profile-img">Change Profile Info</a>
                         <a href="/user/edit-profile" class="btn btn-warning update">Continue</a>

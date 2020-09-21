@@ -22,7 +22,7 @@
                                     
                                     <div class="col-md-4 col-sm-4 d-flex py-2">
                                         <div class="card text-center">
-                                            <img class="card-img-top" src="/storage/cover_images/{{ $post->cover_images }}" alt="">
+                                            <img class="card-img-top" src="/storage/cover_images/{{ $post->cover_images ?? '' }}" alt="">
                                             <div class="card-body">
                                                 <h5 class="card-title"><strong>{{ $post->title }}</strong></h5>
                                                 <p class="card-text">{!! Str::limit($post->body, 100) !!}</p>

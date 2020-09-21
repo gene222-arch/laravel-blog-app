@@ -1,6 +1,17 @@
 window.addEventListener('load', function() {
 
 
+        
+    if (document.querySelector('textarea')) {
+
+        CKEDITOR.replace('textarea-ckeditor');
+    }
+
+    if (document.querySelector('.delete-post')) {
+        document.querySelector('.delete-post').addEventListener('click', (e)=> confirm('Are you sure to delete ?') ? '' : e.preventDefault());
+    
+    }
+
     if ( document.querySelector('.card') ) {
 
         // posts show 
@@ -55,8 +66,6 @@ window.addEventListener('load', function() {
     
     }
     
-
-    
     // profile image
     let updateBtn = document.querySelector('.update');
     let cancelBtn = document.querySelector('.cancel');
@@ -81,15 +90,5 @@ window.addEventListener('load', function() {
         document.querySelector('.cancel').style.display = 'none';
     })
 
-
-    if (document.querySelector('textarea')) {
-
-        document.querySelector('textarea').addEventListener('click', ()=> CKEDITOR.replace('textarea-ckeditor'));
-    }
-
-    if (!document.querySelector('.delete-post')) {
-        document.querySelector('.delete-post').addEventListener('click', (e)=> confirm('Are you sure to delete ?') ? '' : e.preventDefault());
-    
-    }
 
 })

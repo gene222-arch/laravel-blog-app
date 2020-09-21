@@ -20,32 +20,81 @@ class MailsController extends Controller
 
     public function store ( Request $request ) {
 
+        echo count($request->file('images'));
+
         $request->validate([
-            'email' => 'required',
-            'subject' => 'required',
-            'message_body' => 'required'
+            'email' => ['required', 'email'],
+            'images.*' => ['required'],
+            'subject' => ['required', 'max:255'],
+            'message_body' => ['required']
         ]);
+        //
+        $uniqueFileName = [];
 
-        $details = [
-            'title' => $request->input('subject'),
-            'body' => $request->input('message_body')
-        ];
+        if ( $request->hasFile('images') ) {
 
-        $Mails = new Mails;
-        $Mails->from = $request->input('email') ?? Auth::user()->eMails;
-        $Mails->subject = $request->input('subject');
-        $Mails->message = $request->input('message_body');
-        $Mails->user_id = Auth::id();
-        
-        if ( $Mails->save() ) {
+            foreach ($request->file('images') as $key => $image) {
+                $fileFullName = $image->getClientOriginalName();
+                $fileName = pathinfo($fileFullName, PATHINFO_FILENAME);
+                $mime = $image->getMimeType();
+                $uniqueFileName[] = $fileName . '_' . \Carbon\Carbon::now() . '.' . $mime;
+            }
+            
+        } 
 
-            Mail::to($request->input('email'))->send(new TestMail($details));
-        }
+        // set data
+            $data = [
+                'to' => [$request->input('email')],
+                'subject' => $request->input('subject'),
+                'body' => $request->input('message_body'),
+                'images' => [$request->file('images')],
+            ];
 
-        return redirect('/contactus')->with([
-            'success' => 'Email sent successfuly'
-        ]);
+        // store data
+            $mails = new Mails;
+            $mails->to = $request->input('email');
+            $mails->subject = $request->input('subject');
+            $mails->message = $request->input('message_body');
+            $mails->images = implode(',', $uniqueFileName);
+            $mails->user_id = Auth::id();
+            
+        // send data via gmail
+            if ( $mails->save() ) {
 
+        // Mail::to($request->input('email'))->send(new TestMail($details, $subject));
+                Mail::send('pages.testmail', ['data' => $data], function ($email) use ($data, $request) {
+
+                    foreach ($data['to'] as $recipient) {
+
+                        $email->to( $recipient )->subject( $data['subject'] );
+                    }
+
+                    $attachments = [];
+
+                    foreach ($request->file('images') as $image) {
+                        $attachments[] = [
+                            $image->getRealPath() => [
+                                'as' => $image->getClientOriginalName(),
+                                'mime' => $image->getMimeType()
+                            ]
+                        ];
+                    }
+
+                    if ( $request->hasFile('images') ) {
+
+                        foreach( $attachments as $attachment) {
+                            foreach ($attachment as $path => $fileParam) {
+                                $email->attach($path, $fileParam);
+                            }
+                        }
+                    }
+                });
+            }
+
+        // redirect
+            return redirect('/contactus')->with([
+                'success' => 'Email sent successfuly'
+            ]);
     }
 
 }

@@ -27,7 +27,9 @@ class DashboardController extends Controller
      */
     public function index()
     {   
-        return view('dashboard')->with(['posts' => User::find(Auth::id())->posts]);
+        return view('dashboard', [
+                'posts' => User::find(Auth::id())->posts
+            ]);
     }
     
 }

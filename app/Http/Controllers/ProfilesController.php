@@ -12,7 +12,7 @@ class ProfilesController extends Controller
 
     public function __construct () {
 
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['show']);
     }
 
     /**
@@ -57,7 +57,7 @@ class ProfilesController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('auth.recent_login', ['user' => User::find($id)]);
     }
 
     /**
@@ -81,9 +81,10 @@ class ProfilesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'profile_image' => 'image|max:1999|mimes:png,jpg,jpeg'
+            'firstname' => ['required', 'max:255'],
+            'lastname' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'unique:users,email,' . Auth::id()],
+            'profile_image' => ['image', 'mimes:png,jpg,jpeg', 'max:1999']
         ]);
 
         if ( $request->hasFile('profile_image') ) {
@@ -101,7 +102,8 @@ class ProfilesController extends Controller
 
 
         $currentUser = User::find($id);
-        $currentUser->name = $request->input('name');
+        $currentUser->firstname = $request->input('firstname');
+        $currentUser->lastname = $request->input('lastname');
         $currentUser->email = $request->input('email');
 
         if ( $request->hasFile('profile_image') ) {

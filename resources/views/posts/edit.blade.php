@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <label for="body">Body</label>
-            <textarea name="body" value="{!! strip_tags($post->body ?? old('body')) !!}" class="form-control @error('body') is-invalid @enderror" id="textarea-ckeditor" cols="30" rows="10">{{ strip_tags($post->body) ?? strip_tags(old('body')) }}</textarea>
+            <textarea name="body" value="{!! $post->body ?? old('body') !!}" class="form-control @error('body') is-invalid @enderror" id="textarea-ckeditor" cols="30" rows="10">{!! $post->body ?? old('body') !!}</textarea>
             
             @error('body')
                 <div class="invalid-feedback">{{ $message ?? '' }}</div>
@@ -42,5 +42,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/app.js') }} "></script>
+    <script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 @endsection

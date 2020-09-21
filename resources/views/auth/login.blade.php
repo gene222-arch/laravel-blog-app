@@ -1,25 +1,27 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
 
-    <div class="row user__login">
-        @forelse (\App\Models\User::get_all_users() as $username)
-            <div class="recent__logins col-md-2">
-                <div class="row">
-                    <div class="card recent-login-card">
-                        <img src="../../../storage/cover_images/no_profile_image.png" class="card-img-top" alt="...">
-                        <hr>
+    <div class=" user__login">
+        <div class="users">
+            @forelse ($users as $username)
+            <div class="container-recent-logins">
+                <div class="recent__logins">
+                    <div class="card recent-login-card" style="border-radius: 1rem;">
+                        <img src="../../../storage/profile_images/{{ $username->profile_img }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                        <p class="card-title">{{ $username ?? 'Guest' }}</p>
+                        <p class="card-title">
+                            <a href="/user/show_recent_login/{{ $username->id }}">{{ $username->firstname ?? 'Guest' }}</a>
+                        </p>
                         </div>
                     </div>
                 </div>
             </div>
         @empty
-            
+            None
         @endforelse
-        <div class="col-md-6 login-form">
+        </div>
+        <div class="login__form">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -68,22 +70,29 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="text-center btn-block" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                <hr>
+                                <a class="btn btn-success btn-block mt-1" href="/register">
+                                    {{ __('Create an Account ') }}
+                                </a>
                             </div>
                         </div>
                     </form>
                 </div>
+                <div class="card-footer">
+                    <a href="/posts"><h5>Look at other's posts</h5></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 @endsection

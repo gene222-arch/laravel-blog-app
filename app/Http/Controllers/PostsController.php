@@ -61,6 +61,7 @@ class PostsController extends Controller
             $fileNameToStore = $fileNameOnly . '_' . time() . '.' . $fileExtension; 
 
             $storePath = $request->file('cover_images')->storeAs('public/cover_images', $fileNameToStore);
+            // $request->file('cover_images')->move(public_path('files'), $filename);
 
         } else {
 

@@ -48,6 +48,7 @@ use App\Http\Controllers\ProfilesController;
     Route::get('/user/profile', [ProfilesController::class, 'index']);
     Route::get('/user/edit-profile', [ProfilesController::class, 'edit']);
     Route::post('/user/profile/{post}', [ProfilesController::class, 'update']);
+    Route::get('/user/show_recent_login/{id}', [ProfilesController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------

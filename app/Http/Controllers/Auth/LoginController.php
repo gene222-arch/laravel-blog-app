@@ -47,5 +47,12 @@ class LoginController extends Controller
             'last_logged_in' => date("Y-m-d H:i:s", time()) 
         ]);
     }
+
+    public function showLoginForm() {
+
+        return view('auth.login', [
+                'users' => \App\Models\User::select('*')->latest()->take(4)->get()
+            ]);
+    }
     
 }

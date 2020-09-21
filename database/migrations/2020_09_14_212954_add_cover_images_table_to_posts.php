@@ -14,7 +14,7 @@ class AddCoverImagesTableToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('cover_images')->nullable()->after('body');
+            $table->string('cover_images')->nullable()->after('body')->default('no_data.png');
         });
     }
 

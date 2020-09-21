@@ -5,12 +5,18 @@
     line-height: 1.6;
 }
 
-
-
 img {
 
     max-width: 100%;
 }
+
+
+.main__nav__bar {
+
+    background: transparent;
+
+}
+
 
 .split {
 
@@ -55,25 +61,6 @@ nav .active {
     color: rgb(26, 25, 25);
 }
 
-
-/* dashboard */
-
-.create-post {
-    position: fixed;
-    right: 5%;
-    bottom: 10%;
-    padding: .3em .35em;
-    box-shadow: 0 0 .125em rgba(32, 32, 32, 0.5);
-    color: black;
-    background: white;
-    cursor: pointer;
-    transition: all 250ms ease-in-out;
-}
-
-.create-post:hover {
-    transform: scale(1.1);
-}
-
 /*
  ___________________________________________
  |
@@ -83,15 +70,31 @@ nav .active {
 */
 
 /* post index-page section */
-.landing-page-posts {
+.landing__page__posts {
 
     background: url('../storage/page_cover/blog.png');
-    background-size: cover;
+    background-size: contain;
     background-position: right;
     background-attachment: fixed;
     background-repeat: no-repeat;
     width: 100%;
 }
+
+.landing__page__posts .no__post__found {
+
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+}
+
+.landing__page__posts .no-post-text {
+
+    font-size: 2.5rem;
+    padding: 2.5rem;
+}
+
+
 
 /* post create */
 
@@ -535,7 +538,13 @@ nav .active {
     }
 }
 
-/* home-page section */
+/*
+ ___________________________________________
+ |
+ | HOME PAGE SECTION
+ |
+ |___________________________________________
+*/
 .landing-page {
 
     display: flex;
@@ -611,24 +620,36 @@ nav .active {
     border: none;
 }
 
-/* footer + contact-us section */
+/*
+ ___________________________________________
+ |
+ | FOOTER AND CONTACT US PAGE SECTION
+ |
+ |___________________________________________
+*/
 
 .footer {
 
     width: 100%;
     height: 80vh;
-    margin: 6vh 0;
+    margin: 1.5rem 0 12rem;
     background: url( '../storage/page_cover/mail.png') no-repeat left fixed;
     background-size: contain;
 }
 
-/* contact-form */
+/*
+ ___________________________________________
+ |
+ | CONTACT PAGE SECTION
+ |
+ |___________________________________________
+*/
 
 .footer .contact__form {
 
     width: 100%;
     height: 70vh;
-    margin: 2em auto 10em;
+    margin: 0 auto 10rem;
 }
 
 .footer .contact-form {
@@ -649,7 +670,7 @@ nav .active {
     align-items: center;
     width: 90%;
     height: 80vh;
-    margin: 0 auto;
+    margin: 4rem auto 0;
     padding: 2em;
     background: rgb(56, 56, 56);
 
@@ -692,7 +713,37 @@ nav .active {
     text-decoration: none;
 }
 
-/* footer copyright */
+/*
+ ___________________________________________
+ |
+ | CONTACT US MESSAGE SECTION
+ |
+ |___________________________________________
+*/
+
+.contact__us__message__area {
+
+    width: 80%;
+    height: 80vh;
+}
+
+.contact__us__message__area .contact-logo {
+    
+    font-size: 1.5rem;
+}
+
+.contact__us__message__area .contact-message-body {
+
+    text-align: justify;
+}
+
+/*
+ ___________________________________________
+ |
+ | FOOTER SECTION
+ |
+ |___________________________________________
+*/
 .footer .copyright {
 
     height: 10vh;
@@ -726,26 +777,89 @@ nav .active {
 /*
  ___________________________________________
  |
+ | DASHBOARD SECTION
+ |
+ |___________________________________________
+*/
+
+.create-post {
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    padding: .3em .35em;
+    box-shadow: 0 0 .125em rgba(32, 32, 32, 0.5);
+    color: black;
+    background: white;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+}
+
+.create-post:hover {
+    transform: scale(1.1);
+}
+
+/*
+ ___________________________________________
+ |
  | LOGIN PAGE
  |
  |___________________________________________
 */
 
-.user__login > * {
+.user__login {
 
-    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin-top: 5rem;
+}
+.users {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 30rem;
 }
 
-.recent__logins .recent-login-card {
+.users > * {
 
-    width: 15rem;
-    height: 18rem;
-    margin: 0 1rem;
+    margin: 1rem 0 0 .125rem;
 }
 
-.recent__logins .login-form {
 
+.container-recent-logins {
 
+    height: auto;
+}
+
+.container-recent-logins
+.recent-login-card {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.recent__logins 
+.recent-login-card {
+
+    width: 10rem;
+    height: 13rem;
+}
+
+.recent__logins .card-title {
+    
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+
+}
+
+.login__form {
+
+    margin: 2.5rem auto 0;
+    width: 40rem;
 }
 
 
@@ -921,7 +1035,13 @@ nav .active {
     border-left: none;
 }
 
-/* profile avatar image */
+/*
+ ___________________________________________
+ |
+ | PROFILE AVATAR SECTION
+ |
+ |___________________________________________
+*/
 
 .profile__avatar {
 
@@ -937,7 +1057,6 @@ nav .active {
     width: 40%;
     margin: 0 auto;
     border-radius: 1.5em;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .5);
 }
 
 .profile__avatar .profile-user-avatar-name {

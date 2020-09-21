@@ -10,10 +10,10 @@
 
         <div class="container contact__form spacing">
             <h1 class="text-center">Mail us</h1>
-            <form method="POST" class="contact-form" action="{{ action('App\Http\Controllers\MailsController@store') }}">
+            <form method="POST" class="contact-form" action="{{ action('App\Http\Controllers\MailsController@store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">To</label>
                     <input type="email" value="{{ Auth::user()->email ?? 'Guest@yahoo.com' }}" class="form-control @error('email') is-invalid @enderror" name="email" id="" required>
                     
                     @error('email')
@@ -22,6 +22,18 @@
                     </div>
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    <label for="images">File</label>
+                    <input type="file" class="form-control @error('images') is-invalid @enderror p-1" name="images[]" id="" required multiple>
+                    
+                    @error('images')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="subject">Subject</label>
                     <input type="subject" name="subject" value="{{ Auth::user()->subject ?? 'Guest@yahoo.com' }}" class="form-control @error('subject') is-invalid @enderror" id="" required>
@@ -51,8 +63,8 @@
 
         <div class="footer__info">
             <div class="footer-info-logo">
-                <h1><a href="">Logo</a></h1>
-                <small>Share your amazing Story</small>
+                <h1><a href="/" class="text-danger">StoryTime</a></h1>
+                <small class="text-secondary">Share your amazing Story</small>
             </div>
             <ul class="created__by split">
                 <h5>Created by</h5>
