@@ -2,6 +2,61 @@
 
 @section('content')
 
+        <!-- Modal -->
+        <div class="modal fade modal__container" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img__body">
+                        <img alt="" class="modal-img-holder">
+                        <h5 class="img-name" style="margin: -0.5rem 0 1.5rem">Gene Phillip Artista</h5>
+                    </div>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror email-modal" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Your Password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+                            @if (Route::has('password.request'))
+                                <a class="text-center btn-block" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
+
+                            <a class="btn btn-success btn-block mt-1" href="/register">
+                                {{ __('Create an Account ') }}
+                            </a>   
+                                                      
+                        </div> 
+
+                      </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
     <div class=" user__login">
         <div class="users">
             @forelse ($users as $username)
@@ -11,7 +66,11 @@
                         <img src="../../../storage/profile_images/{{ $username->profile_img }}" class="card-img-top" alt="...">
                         <div class="card-body">
                         <p class="card-title">
-                            <a href="/user/show_recent_login/{{ $username->id }}">{{ $username->firstname ?? 'Guest' }}</a>
+                            {{-- <a href="/user/show_recent_login/{{ $username->id }}">{{ $username->firstname ?? 'Guest' }}</a> --}}
+                                    <!-- Button trigger modal -->
+                        <button type="button" value="{{ $username->email }}" data-id="{{ $username->profile_img }}" class="btn btn-primary btn-show-recent-user" data-toggle="modal" data-target="#exampleModal">
+                            {{ $username->firstname }}
+                        </button>
                         </p>
                         </div>
                     </div>
@@ -19,7 +78,7 @@
             </div>
         @empty
             None
-        @endforelse
+        @endforelse            
         </div>
         <div class="login__form">
             <div class="card">
@@ -95,4 +154,21 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        document.querySelectorAll('.btn-show-recent-user').forEach(user => {
+
+            let emailModal = document.querySelector('.email-modal');
+            let imgHolder = document.querySelector('.modal-img-holder');
+
+            user.addEventListener('click', function () {
+
+                emailModal.value = user.value;
+                imgHolder.setAttribute('src', '../../../storage/profile_images/' + user.getAttribute('data-id'));
+            });
+
+        });
+    </script>
 @endsection
