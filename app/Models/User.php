@@ -47,5 +47,13 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function phone () {
+
+        return $this->hasOne(Phone::class);
+        // hasOne('class', foreign key, local key)
+        //default value: hasOne('class', 'user_id', 'id')
+        // user_id from POST Table
+        // id from USER Table
+    }
 
 }

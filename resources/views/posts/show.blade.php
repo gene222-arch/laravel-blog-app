@@ -21,14 +21,14 @@
             </ul>
         </div>
         <div class="card-image">
-            <img style="min-width: 50%; width: 100%; height: 100vh;" src="/storage/cover_images/{{ $post->cover_images }}" alt="" class="img-fluid py-2">
-            <h5 class="card-title"><strong>{{ $post->title }}</strong></h5>
+            <img src="/storage/cover_images/{{ $post->cover_images }}" alt="" class="img-fluid py-2">
+            <h5 class="card-title mt-4"><strong>{{ $post->title }}</strong></h5>
         </div>
         <div class="card-body">
             <p class="card-text">{!! $post->body !!}</p>
         </div>
         <div class="card-footer text-muted">
-            {{ date('Y, M d h:i:s A', strtotime($post->created_at)) }} by: {{ $post->user->name ?? 'Unknown' }}
+            {{ date('Y, M d h:i:s A', strtotime($post->created_at)) }} by: {{ $post->user->firstname ?? 'Unknown' }}
         </div>
     </div>
 

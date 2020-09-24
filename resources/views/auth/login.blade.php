@@ -21,13 +21,13 @@
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror email-modal" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="modalEmail" type="hidden" class="form-control @error('email') is-invalid @enderror email-modal" name="email" value="{{ old('email') }}" required autocomplete="email">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Your Password">
+                                <input id="modalPassword" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Your Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -43,11 +43,7 @@
                                 <a class="text-center btn-block" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
-                            @endif
-
-                            <a class="btn btn-success btn-block mt-1" href="/register">
-                                {{ __('Create an Account ') }}
-                            </a>   
+                            @endif 
                                                       
                         </div> 
 
@@ -63,12 +59,15 @@
             <div class="container-recent-logins">
                 <div class="recent__logins">
                     <div class="card recent-login-card" style="border-radius: 1rem;">
-                        <img src="../../../storage/profile_images/{{ $username->profile_img }}" class="card-img-top" alt="...">
+                        <a href="#" value="{{ $username->email }}" class="btn-show-recent-user" data-toggle="modal" data-target="#exampleModal">
+                            <img src="../../../storage/profile_images/{{ $username->profile_img }}" class="card-img-top" alt="...">
+                        </a>
+                        
                         <div class="card-body">
                         <p class="card-title">
                             {{-- <a href="/user/show_recent_login/{{ $username->id }}">{{ $username->firstname ?? 'Guest' }}</a> --}}
                                     <!-- Button trigger modal -->
-                        <button type="button" value="{{ $username->email }}" data-id="{{ $username->profile_img }}" class="btn btn-primary btn-show-recent-user" data-toggle="modal" data-target="#exampleModal">
+                        <button href="#" value="{{ $username->email }}" data-id="{{ $username->profile_img }}" class="btn btn-default btn-show-recent-user" data-toggle="modal" data-target="#exampleModal">
                             {{ $username->firstname }}
                         </button>
                         </p>
@@ -160,11 +159,12 @@
     <script>
         document.querySelectorAll('.btn-show-recent-user').forEach(user => {
 
-            let emailModal = document.querySelector('.email-modal');
+            let emailModal = document.querySelector('#modalEmail');
             let imgHolder = document.querySelector('.modal-img-holder');
 
-            user.addEventListener('click', function () {
+            user.addEventListener('click', function (e) {
 
+                e.preventDefault();
                 emailModal.value = user.value;
                 imgHolder.setAttribute('src', '../../../storage/profile_images/' + user.getAttribute('data-id'));
             });

@@ -13,8 +13,8 @@
         @method('PUT')
 
         <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" value="{!! $post->title ?? old('title') !!}" name="title" class="form-control @error('title') is-invalid @enderror">
+            <label for="title">Title</label>$post-
+            <input type="text" value="{!! >title ?? old('title') !!}" name="title" class="form-control @error('title') is-invalid @enderror">
             
             @error('title')
                 <div class="invalid-feedback">{{ $message ?? '' }}</div>

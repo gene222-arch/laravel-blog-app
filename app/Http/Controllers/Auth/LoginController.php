@@ -49,7 +49,6 @@ class LoginController extends Controller
      */
     protected function authenticated (Request $request, $user)
     {   
-        $date = new \DateTime();
         $user->update([
             'last_logged_in' => date("Y-m-d H:i:s", time()) 
         ]);

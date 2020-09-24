@@ -11,7 +11,7 @@
               <div class="card text-center my-5 mr-auto ml-auto border-dark" style="width: 90%">
                 <div class="row no-gutter">
                     <div class="col-md-4 col-sm-4">
-                      <img class="card-img img-fluid" src="/storage/cover_images/{{ $post->cover_images }}" alt="">
+                      <img class="card-img img-fluid lazyload" data-src="/storage/cover_images/{{ $post->cover_images }}" alt="...">
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="card-body">

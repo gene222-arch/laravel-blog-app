@@ -46,9 +46,9 @@
                     
                 </ul>
             </div>
-            <div class="col-md-12 col-sm-12 p-0 mx-auto">
+            <div class="col-md-12 col-sm-12">
                 <div class="about__us__achievements__footer row">
-                    <h1 class="mr-4">
+                    <h1 >
                         <span class="emphasized"><strong>L</strong></span>et the w<i class="fas fa-globe-europe text-success" style="font-size: 25px"></i>rld know your Wonderful Stories 
                     </h1>
                     <a href="/posts/create" class="btn btn-success about-us-footer-btn">Get Started</a>

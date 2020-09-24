@@ -10,7 +10,7 @@
             </div>
             
             <div class="contact-message-body">
-                <p>{{ $data['body'] ?? ''}} </p>
+                <p>{{ $data['message_body'] ?? ''}} </p>
             </div>
 
         </div>

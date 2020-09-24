@@ -29,5 +29,6 @@
     </div>
       
     @yield('scripts')
+    <script src="{{ asset('js/lazysizes.min.js') }}" async></script>
 </body>
 </html>

@@ -10,53 +10,44 @@
 
         <div class="container contact__form spacing">
             <h1 class="text-center">Mail us</h1>
-            <form method="POST" class="contact-form" action="{{ action('App\Http\Controllers\MailsController@store') }}" enctype="multipart/form-data">
+            <form id="sendGmail" class="contact-form" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="email">To</label>
-                    <input type="email" value="{{ Auth::user()->email ?? 'Guest@yahoo.com' }}" class="form-control @error('email') is-invalid @enderror" name="email" id="" required>
+                    <input type="email" name="email" class="form-control email" id="" placeholder="Recipient" required>
                     
-                    @error('email')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <div class="invalid-feedback email-err"></div>
+
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="images">File</label>
-                    <input type="file" class="form-control @error('images') is-invalid @enderror p-1" name="images[]" id="" required multiple>
+                    <input type="file" name="images[]" class="form-control @error('images') is-invalid @enderror p-1 images" id="" multiple>
                     
                     @error('images')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                     @enderror
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="subject" name="subject" value="{{ Auth::user()->subject ?? 'Guest@yahoo.com' }}" class="form-control @error('subject') is-invalid @enderror" id="" required>
+                    <input type="subject" name="subject" class="form-control subject" id="" placeholder="Your Subject" required>
                     
-                    @error('subject')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <div class="invalid-feedback subject-err"></div>
+
                 </div>
 
                 <div class="form-group">
                     <label for="message_body">Message</label>
-                    <textarea name="message_body" class="form-control @error('message_body') is-invalid @enderror" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                    <textarea name="message_body" value="{{ Auth::id()}}" class="form-control message_body" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
                     
-                    @error('message_body')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <div class="invalid-feedback message_body-err"></div>
+
                 </div>
                 @auth
-                    <button class="btn btn-success">Send Mail</button>
+                    <button type="submit" class="btn btn-success send-mail">Send Mail</button>
                 @endauth
             </form>
         </div>
@@ -133,5 +124,60 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+
+@section('scripts')
+
+<script>
+    $(document).ready(function () {
+
+        document.querySelector('#sendGmail').addEventListener('submit', function (e) { 
+
+            e.preventDefault();
+
+            let _token = document.querySelector("input[name='_token']").value;
+            let email = document.querySelector('.email').value;
+            let subject =document.querySelector('.subject').value;
+            let message_body = document.querySelector('.message_body').value;
+
+            $.ajax({
+
+                url: "{{ route('mail.send') }}",
+                type: "POST",
+                data : {
+                    _token : _token,
+                    email : email,
+                    subject : subject,
+                    message_body : message_body
+                },
+                success: function (data) {
+                    
+                    if ( !data.error ) {
+                        
+                        alert('Success');
+                        document.querySelector('#sendGmail').reset();
+
+                    } else {
+
+                        printErrorMsg(data.error);
+                    }
+                }
+            });
+
+        });
+
+        function printErrorMsg (msg) {
+
+            $.each( msg, function( key, value ) {
+
+                document.querySelector('.' + key).classList.add('is-invalid')
+                document.querySelector('.' + key + '-err').innerText = value[0];
+            });
+        }
+
+});
+</script>
 
 @endsection

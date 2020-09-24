@@ -44,6 +44,9 @@
                         </g>
                     </svg>
                 </div>
+                
+                <h1>{{ __('message.welcome') }}</h1>
+                <h1>{{ __('message.language') }}</h1>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">

@@ -9,9 +9,6 @@
 
 {{-- external links --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-
-{{-- scripts --}}
-    <script src="{{ asset('js/app.js') }}"></script>
 {{-- styles  --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -28,6 +25,10 @@
         </div>
 
     </div>
+
+    {{-- scripts --}}
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/lazysizes.min.js') }}" async></script>
     @yield('scripts')
 
 </body>

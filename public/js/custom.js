@@ -1,3 +1,7 @@
+
+
+
+// VAnilla       
 window.addEventListener('load', function() {
 
 
@@ -92,3 +96,6 @@ window.addEventListener('load', function() {
 
 
 })
+
+document.querySelector('.return-prev-page').addEventListener('click', ()=> window.history.back());
+
